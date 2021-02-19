@@ -1,0 +1,550 @@
+@charset "UTF-8";
+
+// フォント
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&display=swap');
+
+// 色
+$base-color: #fff;
+$main-color: #21A937;
+$font-color: #444;
+
+
+
+// メディアクエリ
+$breakpoints: (
+  'sm': '(max-width: 480px)', 
+  'md': '(max-width: 896px)',
+  'lg': '(max-width: 1024px)',
+) ;
+
+@mixin mq($breakpoint: lg) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+/* 表示切り替え */
+@include mq (sm) {
+  .is-pc {
+    display: none;
+  }
+}
+
+@include mq (md) {
+  .is-sp {
+    display: none; 
+  }
+} 
+
+/* 共通部分 */
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: $font-color;
+  line-height: 1.5;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: $font-color;
+  transition: .25s;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.btn {
+  border-radius: 5px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  display: inline-block;
+  font-weight: bold;
+}
+
+.btn-wrapper {
+  text-align: center;
+}
+
+.inner {
+  width: 1180px;
+  max-width: 95%;
+  margin: 0 auto;
+  @include mq (sm) {
+    width: 345px;
+    min-width: 100%;
+    padding: 0 16px;
+  }
+}
+
+// テキストの緑の下線
+.txt-border {
+  display: inline-block;
+  background: linear-gradient(transparent 70%, #99e5a5 70%);
+}
+
+
+/* header */
+.header {
+  padding: 28px 0;
+  @include mq (sm) {
+    padding: 15px 0;
+  }
+  &-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include mq(sm) {
+      display: block;
+    }
+  }
+  &-logo {
+    width: 263px;
+    @include mq(md) {
+      width: 150px;   
+    }
+    @include mq(sm) {
+      margin: 0 auto;   
+      margin-bottom: 15px;
+      width: 150px;
+    }
+  }
+  &-contact {
+    text-align: right;
+    @include mq(sm) {
+      text-align: center;   
+    }
+    &-time {
+      font-size: 0.875rem;
+      margin-bottom: 8px;
+    }
+    &-tell {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      @include mq(sm) {
+        justify-content: center;
+      }
+      &-icon {
+        width: 24px;
+        margin-right: 5px;
+      }
+      &-number {
+        color: $main-color;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1;
+      }
+    }
+  }
+}
+
+/* mv */
+.mv {
+  background-image: url(../img/1474084_m.png);
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  height: 947px;
+  @include mq(md) {
+    height: 800px;
+  }
+  @include mq(sm) {
+    height: 500px;
+  }
+  &-content {
+    // テキストの縦書き
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    height: 565px;
+    position: absolute;
+    top: 20%;
+    left: 11%;
+    @include mq(md) {
+      top: 30%;
+      left: 5%;   
+      height: 500px;
+    }
+    @include mq(sm) {
+      height: 380px;  
+      top: 20%;
+    }
+    &-box {
+      background-color: $base-color;
+      margin-right: 80px;
+      padding: 18px 37px;
+      @include mq(md) {
+        margin-right: 50px;
+        padding: 20px 25px;
+      }
+      @include mq(sm) {
+        margin-right: 30px; 
+        padding: 15px;
+      }
+      &:first-child {
+        margin-right: 0;
+      }
+      &-txt {
+        font-size: 1.75rem;
+        font-weight: bold;
+        @include mq(md) {
+          font-size: 1.5rem;
+        }
+        @include mq(sm) {
+          font-size: 1.25rem;
+        }
+        span {
+          color: $main-color;
+        }
+      }
+    }
+  }
+}
+
+/* desc */
+.desc {
+  padding: 162px 0 82px;
+  @include mq(md) {
+    padding: 100px 0;     
+  }
+  @include mq(sm) {
+    padding: 80px 0;     
+  }
+  &-inner {
+    display: flex;
+    align-items: center;
+    @include mq(md) {
+      display: block;   
+    }
+  }
+  &-content {
+    flex-basis: 36%;
+    margin-right: 3.7%;
+    padding-top: 2%;
+    @include mq(md) {
+      text-align: center;
+      margin-right: 0;
+      padding-top: 0;
+    }
+    &-ttl {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 32px;
+      @include mq(sm) {
+        margin-bottom: 15px; 
+      }
+    }
+    &-txt {
+      line-height: 2.4;
+      @include mq(md) {
+        margin-bottom: 20px;
+        line-height: 2;
+      }
+    }
+  }
+  &-img {
+    border-radius: 10px;
+    flex-basis: 58.47%;
+  }
+}
+
+/* contents */
+.contents {
+  background-color: #F5FCF8;
+  padding: 80px 0 112px;
+  /* content */
+  .content {
+    text-align: center;
+    margin-bottom: 82px;
+    &-ttl {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 68px;
+      @include mq(md) {
+        font-size: 1.75rem;
+        margin-bottom: 40px;
+      }
+    }
+    &-txt {
+      margin-bottom: 33px;
+    }
+    &-box {
+      display: flex;
+      @include mq(md) {
+        display: block;
+      }
+      &-item {
+        background-color: $base-color;
+        border: 2px solid #C9C9C9;
+        border-radius: 10px;
+        width: calc(33.333% - 24px * 2 /3);
+        margin-right: 20px;
+        height: 591px;
+        position: relative;
+        padding: 40px 25px 0;
+        @include mq(md) {
+          width: 100%;
+          margin-right: 0;
+          margin-bottom: 60px;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+        &-ttl {
+          font-size: 1.5rem;
+          font-weight: bold;
+          margin-bottom: 39px;
+          @include mq(md) {
+            font-size: 1.75rem;
+          }
+          @include mq(md) {
+            margin-bottom: 25px;
+          }
+        }
+        &-txt {
+          text-align: left;
+          line-height: 2.375;
+          @include mq(md) {
+            font-size: 1.25rem;
+          }
+          @include mq(sm) {
+            line-height: 1.7;
+          }
+        }
+        &-img {
+          width: 187px;
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+    }
+  }
+  
+  /* info */
+  .info {
+    text-align: center;
+    &-ttl {
+      font-weight: bold;
+      font-size: 1.5rem;
+      margin-bottom: 70px;
+      @include mq(md) {
+        font-size: 1.75rem;
+        margin-bottom: 40px; 
+      }
+    }
+    &-box {
+      background-color: $base-color;
+      border-radius: 30px;
+      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+      padding: 49px 69px;
+      font-weight: bold;
+      @include mq(md) {
+        padding: 35px 55px; 
+      }
+      @include mq(sm) {
+        padding: 40px; 
+      }
+      &-item {
+        display: flex;
+        align-items: center;
+        border-bottom: 2px solid #E7E7E7;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        text-align: left;
+        @include mq(md) {
+          display: block;
+        }
+        &:last-child {
+          margin-bottom: 40px;
+        }
+        &-meta {
+          margin-right: 28px;
+          width: 197px;
+          display: flex;
+          @include mq(md) {
+            margin-bottom: 20px;
+          }
+          &-date {
+            color: $main-color;
+            margin-right: 28px;
+          }
+          &-label {
+            background-color: $font-color;
+            padding: 4px 15px;
+            font-size: 0.75rem;
+            width: 79px;
+            text-align: center;
+            a {
+              color: $base-color;
+            }
+          }
+        }
+        &-ttl {
+          width: calc(100% - 197px - 28px);
+        }
+      }
+      .more {
+        text-align: right;
+        padding-top: 20px;
+        padding-right: 15px;
+        position: relative;
+        @include mq(md) {
+          padding-top: 0;
+        }
+        &:after {
+          position: absolute;
+          content: '';
+          right: 0;
+          bottom: 5px;
+          border-style: solid;
+          border-width: 7px 0 7px 10px;
+          border-color: transparent transparent transparent $font-color;
+        }
+      }
+    }
+  }
+}
+
+
+/* contact */
+.contact {
+  padding: 172px 0;
+  @include mq(lg) {
+    padding: 50px 0;
+  }
+  &-content {
+    display: flex;
+    align-items: center;
+    @include mq(lg) {
+      display: block;
+    }
+    &-map {
+      width: 608px;
+      margin-right: 36px;
+      flex-basis: 51.5%;
+      @include mq(lg) {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 60px;
+      }
+      &-iframe {
+        width: 100%;
+        padding-top: 440 / 608 * 100%;
+        position: relative;
+        > iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    &-access {
+      flex-basis: 45.2%;
+      @include mq(lg) {
+        width: 100%;
+        text-align: center;
+      }
+      &-logo {
+        width: 263px;
+        margin-bottom: 25px;
+        @include mq(lg) {
+          margin: 0 auto;
+          margin-bottom: 30px;
+        }
+      }
+      &-post {
+        display: inline-block;
+        margin-right: 16px;
+      }
+      &-address {
+        display: inline-block;
+        margin-bottom: 25px;
+        @include mq(lg) {
+          margin-bottom: 15px;
+        }
+      }
+      &-phone {
+        display: flex;
+        align-items: center;
+        margin-bottom: 28px;
+        @include mq(lg) {
+        justify-content: center;
+        margin-bottom: 15px;
+        }
+        &-icon {
+          width: 24px;
+          margin-right: 5px;
+        }
+        &-number {
+          color: $main-color;
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+      }
+      &-schedule {
+        font-size: 0.875rem;
+        border-top: 2px solid #E7E7E7;
+        border-bottom: 2px solid #E7E7E7;
+        padding: 20px 0;
+        line-height: 1.7;
+        &-wrapper {
+          display: flex;
+          @include mq(lg) {
+            justify-content: center;
+          }
+          @include mq(sm) {
+            display: block;
+          }
+        }
+        &-time {
+          margin-bottom: 20px;
+          @include mq(sm) {
+            margin-bottom: 30px;
+          }
+        }
+        &-left {
+          border-right: 2px solid #E7E7E7;
+          width: 84px;
+          @include mq(sm) {
+            font-size: 1.125rem;
+            font-weight: bold;
+            border: none;
+            padding-bottom: 15px;
+            margin: 0 auto;
+          }
+        }
+        &-right {
+          padding-left: 28px;
+          @include mq(sm) {
+            padding-left: 0;
+          }
+          &-item {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 13px;
+            .mr-17 {
+              margin-right: 17px;
+            }
+            .mr-23 {
+              margin-right: 23px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .copyRight {
+    font-size: 0.6875rem;
+    text-align: right;
+    @include mq(lg) {
+      text-align: center;   
+      padding-top: 15px;
+    }
+  }
+}
